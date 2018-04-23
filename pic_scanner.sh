@@ -1,2 +1,2 @@
 #pildi tuvastamine
-find ./  -name '*' -exec file {} \; | grep -o -P '^.+: \w+ image'
+find . -type f -exec file {} \; | awk -F: '{if ($2 ~/image/) print $1}' |  xargs -I{} cp  {} /tmp/kuhuiganes
